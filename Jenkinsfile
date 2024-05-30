@@ -20,6 +20,7 @@ pipeline {
                 sh 'python --version'
                 sh 'pip --version'
                 sh 'python -m pytest --alluredir allure-results'
+                sh 'allure serve allure-results'
             }
         }
     }
