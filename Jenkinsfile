@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage('Main') {
             steps {
-                container('pytest') {
+                container('allure') {
                   sh 'pwd'
                   sh 'ls -al'
                   sh 'python --version'
