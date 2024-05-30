@@ -23,6 +23,7 @@ pipeline {
                 sh 'python -m pytest --alluredir allure-results'
                 // sh 'allure serve allure-results'
             }
+            archiveArtifacts artifacts: 'db.dump.sql'
         }
     }
 }
