@@ -23,7 +23,7 @@ def test_get_secure_account_users():
     # Check for the presence of security headers
     assert "Content-Security-Policy" in response.headers
     assert "X-Content-Type-Options" in response.headers
-    print(f'{response.headers=}')
+    # print(f'{response.headers=}')
 
 
 # def test_patch_secure_account_user():
