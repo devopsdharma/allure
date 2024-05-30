@@ -47,11 +47,11 @@
 //     }
 // }
 
-#!/usr/bin/env groovy
+// #!/usr/bin/env groovy
 
-properties([
-        buildDiscarder(logRotator(numToKeepStr: '5')),
-])
+// properties([
+//         buildDiscarder(logRotator(numToKeepStr: '5')),
+// ])
 
 ansiColor {
     timestamps {
