@@ -18,30 +18,30 @@ pipeline {
     }
     stages {
         stage('Main') {
-            container('pytest') {
             steps {
-                sh 'pwd'
-                sh 'ls -al'
-                sh 'python --version'
-                sh 'pip --version'
-                // sh 'java -version'
-                sh 'python -m pytest --alluredir allure-results'
-                sh 'ls allure-results'
-                // sh 'allure serve allure-results'
-                stash includes: 'allure-results/**/*', name: 'results'
-            }
+                container('pytest') {
+                  sh 'pwd'
+                  sh 'ls -al'
+                  sh 'python --version'
+                  sh 'pip --version'
+                  // sh 'java -version'
+                  sh 'python -m pytest --alluredir allure-results'
+                  sh 'ls allure-results'
+                  // sh 'allure serve allure-results'
+                  stash includes: 'allure-results/**/*', name: 'results'
+              }
             }
         }
         stage ( 'Main2') {
-            container('allure') {
             steps {
-                sh 'java -version'
-                // sh 'python -m pytest --alluredir allure-results'
-                unstash 'results'
-                sh 'ls allure-results'
-                sh 'allure serve allure-results'
-                // stash includes: 'allure-results/**/*', name: 'results'
-            }
+                container('allure') {
+                  sh 'java -version'
+                  // sh 'python -m pytest --alluredir allure-results'
+                  unstash 'results'
+                  sh 'ls allure-results'
+                  sh 'allure serve allure-results'
+                  // stash includes: 'allure-results/**/*', name: 'results'
+              }
             }
         }
     }
