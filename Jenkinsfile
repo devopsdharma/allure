@@ -12,7 +12,7 @@ pipeline {
                 name 'allure'
                 image 'vhsantos26/allure-report:2.6.0'
                 command 'sleep'
-                args 'infinity'
+                args '3600'
             }
         }
     }
