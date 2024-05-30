@@ -14,12 +14,13 @@ pipeline {
                 command 'sleep'
                 args '3600'
             }
+            defaultContainer 'pytest'
+            retries 2
         }
     }
     stages {
         stage('Main') {
             steps {
-                container('allure') {
                   sh 'pwd'
                   sh 'ls -al'
                   sh 'python --version'
@@ -29,7 +30,6 @@ pipeline {
                   sh 'ls allure-results'
                   // sh 'allure serve allure-results'
                   stash includes: 'allure-results/**/*', name: 'results'
-              }
             }
         }
         stage ( 'Main2') {
