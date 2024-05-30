@@ -19,6 +19,7 @@ pipeline {
                 sh 'ls -al'
                 sh 'python --version'
                 sh 'pip --version'
+                sh 'java -version'
                 // sh 'python -m pytest --alluredir allure-results'
                 sh 'allure serve allure-results'
             }
