@@ -7,7 +7,7 @@ pipeline {
                 image 'allure-pytest:v5'
                 command 'sleep'
                 args 'infinity'
-            },
+            }
             containerTemplate {
                 name 'allure'
                 image 'vhsantos26/allure-report:2.6.0'
@@ -17,7 +17,7 @@ pipeline {
         }
     }
     stages {
-        stage('Main') {
+        stage('pytest') {
             steps {
                 container('pytest') {
                   sh 'pwd'
@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage ( 'Main2') {
+        stage ( 'allure') {
             steps {
                 container('allure') {
                   sh 'java -version'
@@ -42,7 +42,7 @@ pipeline {
                   sh 'allure serve allure-results'
                   // stash includes: 'allure-results/**/*', name: 'results'
               }
-            }
+           }
         }
     }
 }
