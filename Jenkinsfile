@@ -21,8 +21,9 @@ pipeline {
                 sh 'pip --version'
                 // sh 'java -version'
                 sh 'python -m pytest --alluredir allure-results'
+                sh 'ls allure-results'
                 // sh 'allure serve allure-results'
-                archiveArtifacts artifacts: 'allure-results'
+                stash includes: 'allure-results/**/*', name: 'results'
             }
         }
     }
