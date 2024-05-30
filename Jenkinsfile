@@ -4,7 +4,7 @@ pipeline {
         kubernetes {
             containerTemplate {
                 name 'allure'
-                image 'allure-pytest:v4'
+                image 'allure-pytest:v5'
                 command 'sleep'
                 args 'infinity'
             }
